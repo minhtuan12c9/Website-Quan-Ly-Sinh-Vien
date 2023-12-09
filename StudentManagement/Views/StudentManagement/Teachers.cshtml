@@ -1,0 +1,85 @@
+﻿@using StudentManagement.Models
+@{
+    ViewBag.Title = "Teachers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Giangvien> giangviens = ViewData["giangviens"] != null ? (List<Giangvien>)ViewData["giangviens"] : new List<Giangvien>();
+
+    User user = Session["user"] as User;
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Giảng Viên</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "StudentManagement")">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Giảng Viên</li>
+                </ul>
+            </div>
+            <div class="col-auto text-right float-right ml-auto">
+                <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0 datatable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">MSGV</th>
+                                    <th class="text-center">Họ Và Tên</th>
+                                    <th class="text-center">Lớp Chủ Nhiệm</th>
+                                    <th class="text-center">Ngày Sinh</th>
+                                    <th class="text-center">Khoa</th>
+                                    <th class="text-center">Số Điện Thoại</th>
+                                    <th class="text-center">Email</th>
+                                    @if (user != null && user.chucvu == "admin")
+                                    {
+                                        <th class="text-center">Chức Năng</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Giangvien giangvien in giangviens)
+                                {
+                                    <tr>
+                                        <td class="text-center">@giangvien.msgv</td>
+                                        <td class="" style="padding-left: 40px;">
+                                            <h2 class="table-avatar">
+                                                <a href="@Url.Action("ViewTeacher", "StudentManagement")" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="~/img/profiles/1.png" alt="User Image"></a>
+                                                <a href="@Url.Action("ViewTeacher", "StudentManagement")">@giangvien.user.name</a>
+                                            </h2>
+                                        </td>
+                                        <td class="text-center">@giangvien.lop</td>
+                                        <td class="text-center">@giangvien.ngaysinh</td>
+                                        <td class="text-center">@giangvien.khoa</td>
+                                        <td class="text-center">@giangvien.phone</td>
+                                        <td class="text-center">@giangvien.user.email</td>
+                                        @if (user != null && user.chucvu == "admin")
+                                        {
+                                            <td class="text-center">
+                                                <div class="actions">
+                                                    <a href="@Url.Action("EditTeacher", "StudentManagement", new {id = giangvien.id})" class="btn btn-sm bg-success-light mr-2">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a href="@Url.Action("DelTeacher", "StudentManagement", new {id = giangvien.id})" class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

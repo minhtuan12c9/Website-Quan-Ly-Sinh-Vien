@@ -1,0 +1,136 @@
+﻿@using StudentManagement.Models
+@{
+    ViewBag.Title = "Class";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    User user = Session["user"] as User;
+    string currentUrl = HttpContext.Current.Request.Url.AbsoluteUri;
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Thông Tin Lớp Học</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "StudentManagement")">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Lớp Học</li>
+                </ul>
+            </div>
+            <div class="col-auto text-right float-right ml-auto">
+                <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0 datatable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Tên Lớp</th>
+                                    <th class="text-center">Ngành Học</th>
+                                    <th class="text-center">Khoa</th>
+                                    <th class="text-center">Số Lượng Sinh Viên</th>
+                                    <th class="text-center">GVCN</th>
+                                    @if (user != null && user.chucvu == "admin")
+                                    {
+                                        <th class="text-center">Chức Năng</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <h2 class="table-avatar">
+                                            <a href="">20CT3</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center" style="padding-left: 40px;">
+                                        <h2 class="table-avatar">
+                                            <a >Công Nghệ Thông Tin</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center">Công Nghệ</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">Nguyễn Tất Phú Cường</td>
+                                    @if (user != null && user.chucvu == "admin")
+                                    {
+                                        <td class="text-center">
+                                            <div class="actions">
+                                                <a href="" class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <h2 class="table-avatar">
+                                            <a href="">20CT1</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center" style="padding-left: 40px;">
+                                        <h2 class="table-avatar">
+                                            <a >Công Nghệ Thông Tin</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center">Công Nghệ</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">Dương Ngọc Linh</td>
+                                    @if (user != null && user.chucvu == "admin")
+                                    {
+                                        <td class="text-center">
+                                            <div class="actions">
+                                                <a href="" class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <h2 class="table-avatar">
+                                            <a href="">20NT1</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center" style="padding-left: 40px;">
+                                        <h2 class="table-avatar">
+                                            <a >Thiết Kế Nội Thất</a>
+                                        </h2>
+                                    </td>
+                                    <td class="text-center">Kiến Trúc</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">Huỳnh Bá Nghĩa</td>
+                                    @if (user != null && user.chucvu == "admin")
+                                    {
+                                        <td class="text-center">
+                                            <div class="actions">
+                                                <a href="" class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

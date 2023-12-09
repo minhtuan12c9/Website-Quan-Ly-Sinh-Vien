@@ -1,0 +1,112 @@
+﻿@using StudentManagement.Models
+@{
+    ViewBag.Title = "EditStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Sinhvien sinhvien = (Sinhvien)ViewData["sinhvien"];
+}
+}
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Edit Students</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Students", "StudentManagement")">Students</a></li>
+                    <li class="breadcrumb-item active">Edit Students</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="@Url.Action("EditStudent", "StudentManagement", new { id = sinhvien.id })" method="post">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Thông Tin Sinh Viên</span></h5>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Họ Và Tên</label>
+                                    <input name="name" type="text" class="form-control" value="@sinhvien.user.name">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input name="email" type="text" class="form-control" value="@sinhvien.user.email">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Mã Số Sinh Viên</label>
+                                    <input name="mssv" type="text" class="form-control" value="@sinhvien.mssv">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Giới Tính</label>
+                                    <select name="gioitinh" class="form-control">
+                                        <option @(sinhvien.gioitinh == "Nữ" ? "selected" : "")>Nữ</option>
+                                        <option @(sinhvien.gioitinh == "Nam" ? "selected" : "")>Nam</option>
+                                        <option @(sinhvien.gioitinh == "Khác" ? "selected" : "")>Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Ngày Sinh</label>
+                                    <div>
+                                        <input name="ngaysinh" type="text" class="form-control" value="@sinhvien.ngaysinh">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Lớp</label>
+                                    <input name="lop" type="text" class="form-control" value="@sinhvien.lop">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Tôn Giáo</label>
+                                    <input name="tongiao" type="text" class="form-control" value="@sinhvien.tongiao">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Số Điện Thoại</label>
+                                    <input name="phone" type="text" class="form-control" value="@sinhvien.phone">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Khoa</label>
+                                    <input name="khoa" type="text" class="form-control" value="@sinhvien.khoa">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Ngành</label>
+                                    <input name="nganh" type="text" class="form-control" value="@sinhvien.nganh">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Ảnh Đại Diện</label>
+                                    <input name="" type="file" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
